@@ -36,7 +36,7 @@ exports.register = async (req,res) => {
     await usersModel
           .create(user)
           .then(data => {
-            res.status(200).send( { data : "user sucessfully registered"})
+            res.status(200).send( "user sucessfully registered: " + data)
           }).catch(err => {
             res.status(500).send("there is a problem in registering the user " + err.message)
           })

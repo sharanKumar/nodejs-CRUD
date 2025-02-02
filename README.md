@@ -51,7 +51,7 @@ Before you begin, ensure you have the following installed:
    npm run dev
    ```
 
-   The server will start on the port specified in the `.env` file (default is `3000`).
+   The server will start on the port specified in the `.env` file (default is `3000`).This will start the server using `nodemon`, which automatically restarts the server when file changes are detected.
 
 ## API Documentation
 
@@ -117,16 +117,6 @@ Bcrypt is used to hash passwords before storing them in the database. This ensur
 ### Importance of Bcrypt for Privacy
 
 Using bcrypt for hashing passwords is crucial for maintaining user privacy. By hashing passwords, we ensure that the actual passwords are never stored in plain text. This means that even if an attacker gains access to the database, they will not be able to retrieve the original passwords. Bcrypt's use of salting and its computationally intensive nature make it a robust choice for protecting user passwords against various types of attacks, thereby enhancing the overall security and privacy of user data.
-
-## Running the Application
-
-To run the application in development mode, use the following command:
-
-```bash
-npm run dev
-```
-
-This will start the server using `nodemon`, which automatically restarts the server when file changes are detected.
 
 ## Testing
 

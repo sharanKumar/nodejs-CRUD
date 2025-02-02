@@ -21,7 +21,7 @@ exports.create = async (req, res) => {
             })
             .catch(err => {
                 res.status(500).send({
-                    message: err.message | "Some error occurred while creating the Tutorial."
+                    'message': err.message | "Some error occurred while creating the Tutorial."
                 })
             })
 
@@ -37,7 +37,7 @@ exports.findAll = async (req, res) => {
              })
             .catch(err => {
                 res.status(500).send({
-                    message: err.message | "Some error occurred while findinf all Tutorial."
+                    'message': err.message | "Some error occurred while findinf all Tutorial."
                 })
              })
 };
@@ -77,7 +77,7 @@ exports.update = async (req, res) => {
            })
            .catch(err => {
             res.status(500).send({
-              message: "Error updating Tutorial with id=" + id
+              message: err.message | "Error updating Tutorial with id=" + id
             });
         });
   
@@ -101,7 +101,7 @@ exports.delete = async (req, res) => {
           })
             .catch(err => {
                 res.status(500).send({
-                  message: "Could not delete Tutorial with id=" + id
+                  message: err.message | "Could not delete Tutorial with id=" + id
                 });
               })
 };
