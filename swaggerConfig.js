@@ -6,9 +6,9 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "My API",
+      title: "NodeJS-CRUD API",
       version: "1.0.0",
-      description: "API documentation for my project",
+      description: "API documentation for NodeJS-CRUD project",
     },
     servers: [
       {
@@ -18,15 +18,15 @@ const options = {
     tags: [
       {
         name: "Users",
-        description: "API for users in the system"
+        description: "API for users"
       },
       {
         name: "Tutorials",
-        description: "API for tutorials in the system"
+        description: "API for tutorials"
       }
     ]
   },
-  apis: ["./routes/users.routes.js", "./routes/tutorial.routes.js"], // Specify where your API routes are defined
+  apis: ["./routes/*.js"], // Specify where your API routes are defined
 };
 
 const specs = swaggerJsdoc(options);
