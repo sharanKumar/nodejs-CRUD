@@ -25,7 +25,7 @@ exports.login = async (req,res) => {
 exports.register = async (req,res) => {
 
     if(!req.body.userName || !req.body.password){
-       res.send(404).send('Please check user name and password')
+       res.status(404).send('Please check user name and password')
     }
 
     const user = new usersModel({

@@ -1,4 +1,3 @@
-```markdown
 # Simple Node.js CRUD App with MongoDB, Express, and JWT Authentication
 
 This is a simple Node.js CRUD (Create, Read, Update, Delete) application that uses MongoDB as the database, Express as the web framework, and JSON Web Tokens (JWT) for authentication. The application includes basic user registration and login functionality.
@@ -54,7 +53,7 @@ Before you begin, ensure you have the following installed:
 
    The server will start on the port specified in the `.env` file (default is `3000`).
 
-## API Endpoints
+## API Documentation
 
 ### Authentication
 
@@ -62,12 +61,18 @@ Before you begin, ensure you have the following installed:
   - Request Body:
     ```json
     {
-      "userName": "john_doe",
+      "userName": "john@example.com",
       "password": "password123"
     }
     ```
+  - Response:
+    ```json
+    {
+      "message": "User registered successfully"
+    }
+    ```
 
-- **POST /api/login**: Log in an existing user.
+- **POST /api/login**: Login a user.
   - Request Body:
     ```json
     {
@@ -84,25 +89,30 @@ Before you begin, ensure you have the following installed:
 
 ### Protected Routes (Require JWT Authentication)
 
-- **GET /api/**: Get all items.
-- **GET /api/items/:id**: Get a specific item by ID.
-- **POST /api/items**: Create a new item.
+- **GET /api/tutorials**: Retrieve all tutorials.
+- **GET /api/tutorials/:id**: Retrieve a specific tutorial by ID.
+- **POST /api/tutorials**: Create a new tutorial.
   - Request Body:
     ```json
     {
-      "name": "Item Name",
-      "description": "Item Description"
+      "title": "Tutorial Title",
+      "description": "Tutorial Description"
     }
     ```
-- **PUT /api/items/:id**: Update an existing item by ID.
+- **PUT /api/tutorials/:id**: Update an existing tutorial by ID.
   - Request Body:
     ```json
     {
-      "name": "Updated Item Name",
-      "description": "Updated Item Description"
+      "title": "Updated Tutorial Title",
+      "description": "Updated Tutorial Description"
     }
     ```
-- **DELETE /api/items/:id**: Delete an item by ID.
+- **DELETE /api/tutorials/:id**: Delete a specific tutorial by ID.
+- **DELETE /api/tutorials**: Delete all tutorials.
+
+### Bcrypt Significance
+
+Bcrypt is used to hash passwords before storing them in the database. This ensures that even if the database is compromised, the actual passwords are not exposed. Bcrypt is a strong hashing algorithm that incorporates a salt to protect against rainbow table attacks and is computationally intensive to protect against brute-force attacks.
 
 ## Running the Application
 
