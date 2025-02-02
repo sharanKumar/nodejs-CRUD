@@ -44,7 +44,7 @@ const router = require('express').Router();
  *                   type: string
  *                   example: 'Tutorial Description'
  */
-router.post('/', auth.verifyToken, tutorialController.create);
+router.post('/api/', auth.verifyToken, tutorialController.create);
 
 /**
  * @swagger
@@ -70,7 +70,7 @@ router.post('/', auth.verifyToken, tutorialController.create);
  *                     type: string
  *                     example: 'Tutorial Description'
  */
-router.get('/', auth.verifyToken, tutorialController.findAll);
+router.get('/api/', auth.verifyToken, tutorialController.findAll);
 
 /**
  * @swagger
@@ -96,7 +96,7 @@ router.get('/', auth.verifyToken, tutorialController.findAll);
  *                     type: string
  *                     example: 'Published Tutorial Description'
  */
-router.get('/published', auth.verifyToken, tutorialController.findAllPublished);
+router.get('/api/published', auth.verifyToken, tutorialController.findAllPublished);
 
 /**
  * @swagger
@@ -127,7 +127,7 @@ router.get('/published', auth.verifyToken, tutorialController.findAllPublished);
  *                   type: string
  *                   example: 'Tutorial Description'
  */
-router.get('/:id', auth.verifyToken, tutorialController.findOne);
+router.get('/api/:id', auth.verifyToken, tutorialController.findOne);
 
 /**
  * @swagger
@@ -171,7 +171,7 @@ router.get('/:id', auth.verifyToken, tutorialController.findOne);
  *                   type: string
  *                   example: 'Updated Tutorial Description'
  */
-router.put('/:id', auth.verifyToken, tutorialController.update);
+router.put('/api/:id', auth.verifyToken, tutorialController.update);
 
 /**
  * @swagger
@@ -191,7 +191,7 @@ router.put('/:id', auth.verifyToken, tutorialController.update);
  *       200:
  *         description: Tutorial deleted successfully
  */
-router.delete('/:id', auth.verifyToken, tutorialController.delete);
+router.delete('/api/:id', auth.verifyToken, tutorialController.delete);
 
 /**
  * @swagger
@@ -204,7 +204,7 @@ router.delete('/:id', auth.verifyToken, tutorialController.delete);
  *       200:
  *         description: All tutorials deleted successfully
  */
-router.delete('/', auth.verifyToken, tutorialController.deleteAll);
+router.delete('/api/', auth.verifyToken, tutorialController.deleteAll);
 
 /**
  * @swagger
@@ -217,6 +217,6 @@ router.delete('/', auth.verifyToken, tutorialController.deleteAll);
  *       200:
  *         description: Token generated successfully
  */
-router.post('/generateToken', auth.generateToken);
+router.post('/api/generateToken', auth.generateToken);
 
 module.exports = router;

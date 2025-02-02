@@ -114,6 +114,10 @@ Before you begin, ensure you have the following installed:
 
 Bcrypt is used to hash passwords before storing them in the database. This ensures that even if the database is compromised, the actual passwords are not exposed. Bcrypt is a strong hashing algorithm that incorporates a salt to protect against rainbow table attacks and is computationally intensive to protect against brute-force attacks.
 
+### Importance of Bcrypt for Privacy
+
+Using bcrypt for hashing passwords is crucial for maintaining user privacy. By hashing passwords, we ensure that the actual passwords are never stored in plain text. This means that even if an attacker gains access to the database, they will not be able to retrieve the original passwords. Bcrypt's use of salting and its computationally intensive nature make it a robust choice for protecting user passwords against various types of attacks, thereby enhancing the overall security and privacy of user data.
+
 ## Running the Application
 
 To run the application in development mode, use the following command:
@@ -142,7 +146,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [MongoDB](https://www.mongodb.com/)
 - [JSON Web Tokens](https://jwt.io/)
 - [Node.js](https://nodejs.org/)
-
-```
-
-This `README.md` provides a comprehensive overview of the Node.js CRUD application, including setup instructions, API endpoints, and how to run the application. You can customize it further based on your specific project requirements.
