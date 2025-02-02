@@ -9,6 +9,8 @@ const db = require('./db/dbConnect.js')
 const tutorialRouter = require('./routes/tutorial.routes.js')
 const usersRouter = require('./routes/users.routes.js')
 const { swaggerUi, specs } = require("./swaggerConfig");
+const errorHandler = require('./middleware/errorHandler.js');
+
 
 // connect to DB 
 db(process.env.MONGODB_CONNECTIONSTRING);
@@ -28,9 +30,12 @@ app.use(express.urlencoded({ extended: true }));
 //swagger doc
 app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(specs));
 
+// Use the error handling middleware
+app.use(errorHandler);
+
 //add all routes to express
-app.use('/',tutorialRouter)
-app.use('/',usersRouter)
+app.use('/api/tutorials',tutorialRouter)
+app.use('/api/users',usersRouter)
 
 //start the server
 const PORT = process.env.PORT || 8082;

@@ -10,7 +10,7 @@ const router = require('express').Router();
 
 /**
  * @swagger
- * /register:
+ * /api/users/register:
  *   post:
  *     summary: Register a User
  *     tags: [Users]
@@ -40,11 +40,11 @@ const router = require('express').Router();
  *                   type: string
  *                   example: 'User registered successfully'
  */
-router.post('/api/register', usersController.register);
+router.post('/register', usersController.register);
 
 /**
  * @swagger
- * /login:
+ * /api/users/login:
  *   post:
  *     summary: Login a User
  *     tags: [Users]
@@ -74,6 +74,6 @@ router.post('/api/register', usersController.register);
  *                   type: string
  *                   example: 'your-jwt-token'
  */
-router.post('/api/login', usersController.login);
+router.post('/login', usersController.login);
 
 module.exports = router;

@@ -11,7 +11,7 @@ const router = require('express').Router();
 
 /**
  * @swagger
- * /tutorials:
+ * /api/tutorials:
  *   post:
  *     summary: Create a new Tutorial
  *     tags: [Tutorials]
@@ -44,11 +44,11 @@ const router = require('express').Router();
  *                   type: string
  *                   example: 'Tutorial Description'
  */
-router.post('/api/', auth.verifyToken, tutorialController.create);
+router.post('/', auth.verifyToken, tutorialController.create);
 
 /**
  * @swagger
- * /tutorials:
+ * /api/tutorials:
  *   get:
  *     summary: Retrieve all Tutorials
  *     tags: [Tutorials]
@@ -70,11 +70,11 @@ router.post('/api/', auth.verifyToken, tutorialController.create);
  *                     type: string
  *                     example: 'Tutorial Description'
  */
-router.get('/api/', auth.verifyToken, tutorialController.findAll);
+router.get('/', auth.verifyToken, tutorialController.findAll);
 
 /**
  * @swagger
- * /tutorials/published:
+ * /api/tutorials/published:
  *   get:
  *     summary: Retrieve all Published Tutorials
  *     tags: [Tutorials]
@@ -96,11 +96,11 @@ router.get('/api/', auth.verifyToken, tutorialController.findAll);
  *                     type: string
  *                     example: 'Published Tutorial Description'
  */
-router.get('/api/published', auth.verifyToken, tutorialController.findAllPublished);
+router.get('/published', auth.verifyToken, tutorialController.findAllPublished);
 
 /**
  * @swagger
- * /tutorials/{id}:
+ * /api/tutorials/{id}:
  *   get:
  *     summary: Retrieve a single Tutorial by ID
  *     tags: [Tutorials]
@@ -127,11 +127,11 @@ router.get('/api/published', auth.verifyToken, tutorialController.findAllPublish
  *                   type: string
  *                   example: 'Tutorial Description'
  */
-router.get('/api/:id', auth.verifyToken, tutorialController.findOne);
+router.get('/:id', auth.verifyToken, tutorialController.findOne);
 
 /**
  * @swagger
- * /tutorials/{id}:
+ * /api/tutorials/{id}:
  *   put:
  *     summary: Update a Tutorial by ID
  *     tags: [Tutorials]
@@ -171,11 +171,11 @@ router.get('/api/:id', auth.verifyToken, tutorialController.findOne);
  *                   type: string
  *                   example: 'Updated Tutorial Description'
  */
-router.put('/api/:id', auth.verifyToken, tutorialController.update);
+router.put('/:id', auth.verifyToken, tutorialController.update);
 
 /**
  * @swagger
- * /tutorials/{id}:
+ * /api/tutorials/{id}:
  *   delete:
  *     summary: Delete a Tutorial by ID
  *     tags: [Tutorials]
@@ -191,11 +191,11 @@ router.put('/api/:id', auth.verifyToken, tutorialController.update);
  *       200:
  *         description: Tutorial deleted successfully
  */
-router.delete('/api/:id', auth.verifyToken, tutorialController.delete);
+router.delete('/:id', auth.verifyToken, tutorialController.delete);
 
 /**
  * @swagger
- * /tutorials:
+ * /api/tutorials:
  *   delete:
  *     summary: Delete all Tutorials
  *     tags: [Tutorials]
@@ -204,11 +204,11 @@ router.delete('/api/:id', auth.verifyToken, tutorialController.delete);
  *       200:
  *         description: All tutorials deleted successfully
  */
-router.delete('/api/', auth.verifyToken, tutorialController.deleteAll);
+router.delete('/', auth.verifyToken, tutorialController.deleteAll);
 
 /**
  * @swagger
- * /tutorials/generateToken:
+ * /api/tutorials/generateToken:
  *   post:
  *     summary: Generate a new Token
  *     tags: [Tutorials]
@@ -217,6 +217,6 @@ router.delete('/api/', auth.verifyToken, tutorialController.deleteAll);
  *       200:
  *         description: Token generated successfully
  */
-router.post('/api/generateToken', auth.generateToken);
+router.post('/generateToken', auth.generateToken);
 
 module.exports = router;
