@@ -1,5 +1,6 @@
 const usersController = require('../controller/users.controller.js');
 const router = require('express').Router();
+const logger = require('../config/logger');
 
 /**
  * @swagger
@@ -14,7 +15,7 @@ const router = require('express').Router();
  *   post:
  *     summary: Register a User
  *     tags: [Users]
- *     description: Register a user using userName and password
+ *     description: Register a user using userName, email, and password
  *     requestBody:
  *       required: true
  *       content:
@@ -25,6 +26,9 @@ const router = require('express').Router();
  *               userName:
  *                 type: string
  *                 example: 'John Doe'
+ *               email:
+ *                 type: string
+ *                 example: 'john.doe@example.com'
  *               password:
  *                 type: string
  *                 example: 'password'
@@ -40,7 +44,10 @@ const router = require('express').Router();
  *                   type: string
  *                   example: 'User registered successfully'
  */
-router.post('/register', usersController.register);
+router.post('/register', (req, res, next) => {
+  logger.info('Register endpoint called');
+  usersController.register(req, res, next);
+});
 
 /**
  * @swagger
@@ -74,6 +81,9 @@ router.post('/register', usersController.register);
  *                   type: string
  *                   example: 'your-jwt-token'
  */
-router.post('/login', usersController.login);
+router.post('/login', (req, res, next) => {
+  logger.info('Login endpoint called');
+  usersController.login(req, res, next);
+});
 
 module.exports = router;

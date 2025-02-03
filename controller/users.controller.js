@@ -27,14 +27,14 @@ exports.login = async (req, res, next) => {
 
 exports.register = async (req, res, next) => {
   try {
-    const { userName, password } = req.body;
+    const { userName, password , email} = req.body;
 
-    if (!userName || !password) {
-      return res.status(400).send('User name and password are required');
+    if (!userName || !password || !email)  {
+      return res.status(400).send('User name and password and email are required');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new usersModel({ userName, password: hashedPassword });
+    const newUser = new usersModel({ userName, password: hashedPassword , email});
 
     await newUser.save();
     res.status(201).send({ message: 'User registered successfully' });

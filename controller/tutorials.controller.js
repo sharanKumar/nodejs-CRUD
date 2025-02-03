@@ -1,4 +1,6 @@
 const tutorialModel = require('../model/tutorials.model.js')
+const redisClient = require('../db/redisClient.js');
+const logger = require('../config/logger.js');
 
 // Create and Save a new Tutorial
 exports.create = async (req, res) => {
@@ -113,16 +115,25 @@ exports.deleteAll = async (req, res, next) => {
   }
 };
 
-// Find all published Tutorials
-exports.findAllPublished = async (req, res) => {
-    await tutorialModel.find({ published: true })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials."
-      });
+// Find all published Tutorials with caching
+exports.findAllPublished = async (req, res, next) => {
+  try {
+    const cacheKey = 'published_tutorials';
+    const cachedData = await redisClient.get(cacheKey);
+
+    if (cachedData) {
+      logger.info('Cache hit');
+      return res.json(JSON.parse(cachedData));
+    }
+
+    const data = await tutorialModel.find({ published: true });
+    await redisClient.set(cacheKey, JSON.stringify(data), {
+      EX: 3600, // Cache expiration time in seconds (1 hour)
     });
+
+    logger.info('Cache miss');
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
 };
